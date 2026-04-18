@@ -1,7 +1,8 @@
-const express = require('express');
-const connectDB = require('./config/db');
-const { errorHandler } = require('./middleware/errorMiddleware');
-const transactionRoutes = require('./routes/transactionRoutes');
+const express = require("express");
+const connectDB = require("./config/db");
+const { errorHandler } = require("./middleware/errorMiddleware");
+const authRoutes = require("./routes/authRoutes");
+const expenseRoutes = require("./routes/transactionRoutes");
 
 const app = express();
 
@@ -12,7 +13,8 @@ app.use(async (req, res, next) => {
   next();
 });
 
-app.use('/api/transactions', transactionRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/expenses", expenseRoutes);
 app.use(errorHandler);
 
 module.exports = app;
