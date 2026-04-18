@@ -3,8 +3,10 @@ const connectDB = require("./config/db");
 const { errorHandler } = require("./middleware/errorMiddleware");
 const authRoutes = require("./routes/authRoutes");
 const expenseRoutes = require("./routes/transactionRoutes");
+const cors = require("cors");
 
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 
